@@ -13,8 +13,6 @@ for (; ch >= 'A' ; ch--)
 putchar(tolower(ch));
 }
 
-
-putchar("\n");
 return(0);
 
 
