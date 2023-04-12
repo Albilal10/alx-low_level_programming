@@ -25,6 +25,7 @@ char *create_buffer(char *file)
 	}
 
 	return(bu);
+}
 void close_file(int fdes)
 {
 	int c;
@@ -61,7 +62,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	buffer = create_buffer(argv[2]);
+	bu = create_buffer(argv[2]);
 	from = open(argv[1], O_RDONLY);
 	r = read(from, bu, 1024);
 	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
@@ -71,7 +72,7 @@ int main(int argc, char *argv[])
 		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't read from file %s\n", argv[1]);
-			free(buffer);
+			free(bu);
 			exit(98);
 		}
 
@@ -95,4 +96,3 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
-
